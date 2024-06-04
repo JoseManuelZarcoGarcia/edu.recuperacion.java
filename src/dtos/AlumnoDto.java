@@ -1,6 +1,7 @@
 package dtos;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class AlumnoDto {
 	
@@ -14,7 +15,8 @@ public class AlumnoDto {
     private String direccion = "aaa";
     private String telefono = "999999999";
     private String email = "aaa";
-    private Date fechaNacimiento = new Date(System.currentTimeMillis());
+    private Date fechaNacimiento = new Date(9999, 12, 31);
+    //private Date fchDate = new Date(System.currentTimeMillis());
     
     
     //Getter and Setter

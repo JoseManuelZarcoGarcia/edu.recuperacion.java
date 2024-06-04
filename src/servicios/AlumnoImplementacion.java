@@ -44,8 +44,11 @@ public class AlumnoImplementacion implements AlumnoInterfaz {
 	        String email = sc.next();
 	        nuevoAlumno.setEmail(email);
 	        
-	        System.out.println("escriba su fecha de nacimiento ");
-	        nuevoAlumno.setFechaNacimiento(null);
+	        System.out.println("escriba su fecha de nacimiento yyyy-MM-dd");
+	        String fecha = sc.next();
+	        String[] s = fecha.split("-");
+	        int anyo = Integer.parseInt(s[0]), mes = Integer.parseInt(s[1]),dia = Integer.parseInt(s[2]);
+	        nuevoAlumno.setFechaNacimiento(anyo,mes,dia);
 
 	        controladores.Inicio.listaAlumno.add(nuevoAlumno);
 	    } while (controladores.Inicio.listaAlumno.size()<3);
