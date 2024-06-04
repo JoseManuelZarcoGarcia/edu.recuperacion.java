@@ -43,6 +43,9 @@ public class AlumnoImplementacion implements AlumnoInterfaz {
 	        System.out.println("Escriba su email");
 	        String email = sc.next();
 	        nuevoAlumno.setEmail(email);
+	        
+	        System.out.println("escriba su fecha de nacimiento ");
+	        nuevoAlumno.setFechaNacimiento(null);
 
 	        controladores.Inicio.listaAlumno.add(nuevoAlumno);
 	    } while (controladores.Inicio.listaAlumno.size()<3);

@@ -5,11 +5,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.sql.Date;
+import java.util.Scanner;
 
 import controladores.Inicio;
 import dtos.AlumnoDto;
 
 public class FicheroImplementacion implements FicheroInterfaz {
+	
+	Scanner sc = new Scanner(System.in);
+	
 	
 	public void ficheroLog(String txt) throws IOException {
 		try {
@@ -53,20 +58,29 @@ public class FicheroImplementacion implements FicheroInterfaz {
 			FileWriter fw = new FileWriter(controladores.Inicio.ficheroAlumno, true);
 			
             FileReader lector = new FileReader(controladores.Inicio.ficheroAlumno);
-            BufferedReader bufferedReader = new BufferedReader(lector);
-            String lineasAlumnosArray[];
-            String AlumnosArray[];
-            for (int x=0;bufferedReader.readLine() != null;x++) {
-            	/*
-            	 * 
-            	 * falta el meter archivos y tal
-            	 * 
-            	 * */
+            BufferedReader br = new BufferedReader(lector);
+            String lineasAlumnos; //meter en bucle
+            while((lineasAlumnos=br.readLine()) != null) {
+            	
+            	AlumnoDto alumno = new AlumnoDto();
+            	String[] campos = lineasAlumnos.split(";");
+            	
+            	alumno.setIdAlumno(util.Utilidades.idAutogeneradoAlumno());
+            	
+            	alumno.setNombre(campos[0]);
+            	
+            	alumno.setDni(campos[1]);
+            	
+            	alumno.setTelefono(campos[2]);
+            	
+            	alumno.setFechaNacimiento(null);
+            	
+            	controladores.Inicio.listaAlumno.add(alumno);
+            	
             }
             
-            
             // Cerrar el BufferedReader
-            bufferedReader.close();
+            br.close();
 			
 			fw.write("txt".concat("\n"));
 			fw.close();

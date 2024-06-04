@@ -1,5 +1,7 @@
 package dtos;
 
+import java.sql.Date;
+
 public class AlumnoDto {
 	
 	
@@ -12,11 +14,13 @@ public class AlumnoDto {
     private String direccion = "aaa";
     private String telefono = "999999999";
     private String email = "aaa";
+    private Date fechaNacimiento = new Date(System.currentTimeMillis());
     
     
     //Getter and Setter
     
-    public long getIdAlumno() {
+    
+	public long getIdAlumno() {
 		return idAlumno;
 	}
 	public void setIdAlumno(long idAlumno) {
@@ -64,13 +68,19 @@ public class AlumnoDto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
 	
 
     //Constructores
 	
 	@Override
 	public String toString() {
-		String stringFicheroAlumno = getNombre().concat(",").concat(dni).concat(",").concat(telefono).concat("\n");
+		String stringFicheroAlumno = getNombre().concat(",").concat(dni).concat(",").concat(telefono).concat(",").concat(fechaNacimiento.toString()).concat("\n");
 		return stringFicheroAlumno;
 	}
 
